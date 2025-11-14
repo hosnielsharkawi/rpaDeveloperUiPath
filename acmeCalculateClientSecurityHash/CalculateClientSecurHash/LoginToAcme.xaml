@@ -105,7 +105,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="LoginToAcme" sap:VirtualizedContainerService.HintSize="686,2370.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="LoginToAcme" sap:VirtualizedContainerService.HintSize="1213.2,1891.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strEmail" />
       <Variable x:TypeArguments="ss:SecureString" Name="strPassword" />
@@ -115,16 +115,12 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="521.6,2347.2" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="521.6,1868" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <TryCatch.Variables>
-        <Variable x:TypeArguments="x:Boolean" Name="isAuthenticate">
-          <Variable.Default>
-            <Literal x:TypeArguments="x:Boolean" />
-          </Variable.Default>
-        </Variable>
+        <Variable x:TypeArguments="x:Boolean" Default="False" Name="isAuthenticate" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="520,1712.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="520,1227.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -165,16 +161,47 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:GetRobotCredential>
-          <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="486.4,1146.4" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_Config(&quot;RetryTimes&quot;).ToString)]" RetryInterval="00:00:00">
+          <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="486.4,660.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_Config(&quot;RetryTimes&quot;).ToString)]" RetryInterval="00:00:00">
             <ui:RetryScope.ActivityBody>
               <ActivityAction>
-                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="484.8,858.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="449.6,372.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NApplicationCard sap2010:Annotation.AnnotationText="Preconditions:&#xA;Assets ACME_Email and ACME_Password exist in Orchestrator.&#xA;&#xA;Description:&#xA;Logs into the ACME System using credentials from Orchestrator assets.&#xA;&#xA;Postconditions:&#xA;User is logged in to ACME.&#xA;Dashboard page is visible and ready for next navigation." AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Open Acme Login Page" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="451.2,264.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" IsIncognito="False" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="a36130d6-6df8-46d4-9dbd-d5eed21f4514" Version="V2" WindowResize="Maximize">
+                  <uix:NCheckState DisplayName="Check - Authentication Ui element" EnableIfNotExists="False" Exists="[isAuthenticate]" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="NCheckState_1" Timeout="2" Version="V5">
+                    <uix:NCheckState.IfExists>
+                      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,256.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Acme Authenticate has been appeared.&quot;]" />
+                      </Sequence>
+                    </uix:NCheckState.IfExists>
+                    <uix:NCheckState.IfNotExists>
+                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </uix:NCheckState.IfNotExists>
+                    <uix:NCheckState.Target>
+                      <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/login" CVScreenId="0f9a962b-fa61-48d6-99e1-7aeec05fb007" ContentHash="u_Da2qj0SUOkzgy6KGuSKg" DesignTimeRectangle="326, 407, 624, 34" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='H3' /&gt;" Guid="ce6427c4-a65c-4afd-9671-3a8010d781d1" InformativeScreenshot="81149b69b39b018d2069e90389189661.png" Reference="xluB_B8tH0u6FNoBuyMrZQ/mggo6q9Sc0WhdT8hFKxyQA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Log In' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NCheckState.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NCheckState>
+                  <uix:NApplicationCard sap2010:Annotation.AnnotationText="Preconditions:&#xA;Assets ACME_Email and ACME_Password exist in Orchestrator.&#xA;&#xA;Description:&#xA;Logs into the ACME System using credentials from Orchestrator assets.&#xA;&#xA;Postconditions:&#xA;User is logged in to ACME.&#xA;Dashboard page is visible and ready for next navigation." AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Open Acme Login Page" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="416,256" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" IsIncognito="False" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="a36130d6-6df8-46d4-9dbd-d5eed21f4514" Version="V2" WindowResize="Maximize">
                     <uix:NApplicationCard.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
@@ -242,43 +269,12 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NApplicationCard>
-                  <uix:NCheckState DisplayName="Check - Authentication Ui element" EnableIfNotExists="False" Exists="[isAuthenticate]" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="451.2,533.6" sap2010:WorkflowViewState.IdRef="NCheckState_1" Version="V5">
-                    <uix:NCheckState.IfExists>
-                      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,256.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Acme Authenticate has been appeared.&quot;]" />
-                      </Sequence>
-                    </uix:NCheckState.IfExists>
-                    <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Sequence>
-                    </uix:NCheckState.IfNotExists>
-                    <uix:NCheckState.Target>
-                      <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/login" CVScreenId="0f9a962b-fa61-48d6-99e1-7aeec05fb007" ContentHash="u_Da2qj0SUOkzgy6KGuSKg" DesignTimeRectangle="326, 407, 624, 34" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='H3' /&gt;" Guid="ce6427c4-a65c-4afd-9671-3a8010d781d1" InformativeScreenshot="81149b69b39b018d2069e90389189661.png" Reference="xluB_B8tH0u6FNoBuyMrZQ/mggo6q9Sc0WhdT8hFKxyQA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Log In' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                    </uix:NCheckState.Target>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </uix:NCheckState>
                 </Sequence>
               </ActivityAction>
             </ui:RetryScope.ActivityBody>
             <ui:RetryScope.Condition>
               <ActivityFunc x:TypeArguments="x:Boolean">
-                <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True" Expression="[isAuthenticate]" sap:VirtualizedContainerService.HintSize="460.8,131.2" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+                <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True" Expression="[isAuthenticate]" sap:VirtualizedContainerService.HintSize="425.6,131.2" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
               </ActivityFunc>
             </ui:RetryScope.Condition>
           </ui:RetryScope>
