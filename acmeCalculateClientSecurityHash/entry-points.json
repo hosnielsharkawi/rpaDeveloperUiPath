@@ -1,0 +1,43 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "CalculateClientSecurHash\\ExtractClientData.cs",
+      "uniqueId": "dcacf433-b2ea-4c70-a896-b72144aa57f6",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "clientInfoText": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "clientInfoText"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "ClientID": {
+            "type": "string"
+          },
+          "ClientName": {
+            "type": "string"
+          },
+          "ClientCountry": {
+            "type": "string"
+          },
+          "SecurityHash": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "47550b02-947b-4b40-b86f-902bab88c628",
+      "type": "process"
+    }
+  ]
+}

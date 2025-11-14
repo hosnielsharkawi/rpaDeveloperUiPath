@@ -1,0 +1,6 @@
+{
+  "Name": "acmeCalculateClientSecurityHash",
+  "ProjectType": "Process",
+  "Description": "The main purpose of the project is to extract data from the ACME website, update specific clients, and hash their information.",
+  "MainFile": "Main.xaml"
+}
